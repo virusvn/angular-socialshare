@@ -10,7 +10,7 @@ angular.module('djds4rce.angular-socialshare', [])
 	.factory('$FB', ['$window', function($window) {
 		return {
 			init: function(fbId, lang) {
-				lang = typeof lang !== 'undefined' ? a : 'en_US';
+				lang = typeof lang !== 'undefined' ? lang : 'en_US';
 				if (fbId) {
 					this.fbId = fbId;
 					$window.fbAsyncInit = function() {
