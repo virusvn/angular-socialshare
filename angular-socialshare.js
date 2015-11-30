@@ -9,7 +9,8 @@
 angular.module('djds4rce.angular-socialshare', [])
 	.factory('$FB', ['$window', function($window) {
 		return {
-			init: function(fbId) {
+			init: function(fbId, lang) {
+				lang = typeof lang !== 'undefined' ? a : 'en_US';
 				if (fbId) {
 					this.fbId = fbId;
 					$window.fbAsyncInit = function() {
@@ -20,7 +21,7 @@ angular.module('djds4rce.angular-socialshare', [])
 							xfbml: true
 						});
 					};
-					(function(d) {
+					(function(d, lang) {
 						var js,
 							id = 'facebook-jssdk',
 							ref = d.getElementsByTagName('script')[0];
@@ -31,11 +32,11 @@ angular.module('djds4rce.angular-socialshare', [])
 						js = d.createElement('script');
 						js.id = id;
 						js.async = true;
-						js.src = "//connect.facebook.net/en_US/all.js";
+						js.src = "//connect.facebook.net/" + lang + "/all.js";
 
 						ref.parentNode.insertBefore(js, ref);
 
-					}(document));
+					}(document, lang));
 				} else {
 					throw ("FB App Id Cannot be blank");
 				}
